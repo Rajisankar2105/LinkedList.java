@@ -1,0 +1,44 @@
+class Node{
+    int data;
+    Node next;
+    Node(int data){
+        this.data=data;
+        this.next=null;
+    }
+}
+public class SinglyLinkedListt{
+    Node head;
+    public void insert(int data){
+        Node newNode=new Node(data);
+        if(head==null){
+            head=newNode;
+        }else{
+            Node temp=head;
+            while(temp.next!=null){
+                temp=temp.next;
+            }
+            temp.next=newNode;
+        }
+    }
+    public void display(){
+        if(head==null){
+            System.out.println("List is empty:");
+            return;
+        }
+        Node temp=head;
+        System.out.print("Linked List Element:");
+        while(temp!=null){
+            System.out.print(temp.data +" ");
+            temp=temp.next;
+        }
+        System.out.println();
+    }
+    public static void main(String []args){
+        SinglyLinkedListt li= new SinglyLinkedListt();
+        li.insert(10);
+        li.insert(20);
+        li.insert(30);
+        li.insert(40);
+        li.display();
+    }
+}
