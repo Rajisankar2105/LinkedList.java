@@ -1,0 +1,42 @@
+class Node {
+    int data;
+    Node next;
+    Node(int data){
+        this.data=data;
+        this.next=null;
+    }
+}
+class LinkedList{
+    Node head;
+    public void insert(int data){
+         Node newNode= new Node(data);
+         if(head==null){
+             head=newNode;
+             return;
+         }
+        Node temp=head;
+        while(temp.next!=null){
+            temp=temp.next;
+        }
+        temp.next=newNode;
+    }
+        public int countNodes(){
+        int count=0;
+        Node temp=head;
+        while (temp!=null){
+            count++;
+            temp=temp.next;
+        }
+        return count;
+        }
+}
+public class CountNodes{
+    public static void main(String []args){
+        LinkedList li=new LinkedList();
+        li.insert(10);
+        li.insert(20);
+        li.insert(30);
+        li.insert(40);
+        System.out.println("Number of Nodes:"+li.countNodes());
+    }
+}
