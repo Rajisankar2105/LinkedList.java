@@ -1,0 +1,44 @@
+import java.util.*;
+class Node{
+    int data;
+    Node prev;
+    Node next;
+    Node(int data){
+        this.data=data;
+        this.prev=null;
+        this.next=null;
+    }
+}
+class Doubly{
+    Node head;
+    void insertAtbeg(int data){
+        Node newNode=new Node(data);
+        if(head==null){
+            head=newNode;
+            return;
+        }
+        newNode.next=head;
+        head.prev=newNode;
+        head=newNode;
+    }
+    void display(){
+        Node temp=head;
+        while(temp!=null){
+            System.out.print(temp.data +" ");
+            temp=temp.next;
+        }
+        System.out.println();
+    }
+
+public static void main(String[]args){
+    Doubly d=new Doubly();
+    d.insertAtbeg(10);
+    d.insertAtbeg(20);
+    d.insertAtbeg(30);
+    d.display();
+}
+}
+
+
+
+//30 20 10
