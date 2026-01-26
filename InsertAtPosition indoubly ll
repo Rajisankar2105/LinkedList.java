@@ -1,0 +1,57 @@
+import java.util.*;
+class Node{
+    int data;
+    Node prev;
+    Node next;
+    Node(int data){
+        this.data=data;
+        this.prev=null;
+        this.next=null;
+    }
+}
+class Doubly{
+    Node head;
+    void insertAtPosition(int data,int position){
+        Node newNode =new Node(data);
+        if(position==1){
+            newNode.next=head;
+            if(head!=null){
+                head.prev=newNode;
+            }
+            head=newNode;
+            return;
+        }
+        Node temp=head;
+        for(int i=1;i<position-1 &&temp!=null;i++){
+            temp=temp.next;
+        }
+        if(temp==null){
+            System.out.println("Invalid");
+            return;
+        }
+        newNode.next=temp.next;
+        newNode.prev=temp;
+        if(temp.next!=null){
+            temp.next.prev=newNode;
+        }
+        temp.next=newNode;
+    }
+    void display(){
+        Node temp=head;
+        while(temp!=null){
+            System.out.print(temp.data +" ");
+            temp=temp.next;
+        }
+        System.out.println();
+    }
+
+public static void main(String[]args){
+    Doubly d=new Doubly();
+    d.insertAtPosition(10,1);
+    d.insertAtPosition(20,2);
+    d.insertAtPosition(30,3);
+    d.insertAtPosition(13,1);
+    
+    d.display();
+}
+}
